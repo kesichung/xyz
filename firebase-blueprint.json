@@ -1,0 +1,36 @@
+{
+  "entities": {
+    "LeaderboardEntry": {
+      "title": "Leaderboard Entry",
+      "description": "Global leaderboard for completion times.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The player's name."
+        },
+        "timeInSeconds": {
+          "type": "number",
+          "description": "The time it took the player to complete the game."
+        },
+        "date": {
+          "type": "string",
+          "description": "A formatted string of the date."
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Server timestamp of when the score was submitted."
+        }
+      },
+      "required": ["name", "timeInSeconds", "date", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/leaderboard/{entryId}": {
+      "schema": {
+        "$ref": "#/entities/LeaderboardEntry"
+      },
+      "description": "Collection of all leaderboard entries"
+    }
+  }
+}
