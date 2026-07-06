@@ -1,0 +1,21 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Allow anyone to read leaderboard (since it's a global leaderboard)
+    // Allow anyone to create an entry if it follows the schema
+    match /leaderboard/{entryId} {
+      allow read: if true;
+      allow create: if 
+        request.resource.data.keys().hasAll(['name', 'timeInSeconds', 'date', 'createdAt']) &&
+        request.resource.data.keys().hasOnly(['name', 'timeInSeconds', 'date', 'createdAt']) &&
+        request.resource.data.name is string &&
+        request.resource.data.timeInSeconds is number &&
+        request.resource.data.date is string &&
+        request.resource.data.createdAt is number;
+      allow update: if false;
+      allow delete: if false;
+    }
+  }
+}
