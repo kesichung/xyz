@@ -1,0 +1,6 @@
+{
+  "name": "台灣歷史事件排序遊戲",
+  "description": "一個精美的台灣歷史事件排序互動小遊戲，使用 HTML5 拖放 API 與 Tailwind CSS 打造。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
